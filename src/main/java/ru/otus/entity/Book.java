@@ -1,6 +1,7 @@
 package ru.otus.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,5 +42,11 @@ public class Book {
     @ManyToOne(targetEntity = Author.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "Author_Id", referencedColumnName = "id")
     private Author author;
+
+    public Book(String title, Genre genre, Author author) {
+        this.title = title;
+        this.genre = genre;
+        this.author = author;
+    }
 
 }

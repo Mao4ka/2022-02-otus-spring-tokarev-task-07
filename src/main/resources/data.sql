@@ -28,4 +28,3 @@ insert into Comment(Comment_Text, Book_Id) values ('Убейся ап стенк
 insert into Comment(Comment_Text, Book_Id) values ('Автор, займись, наконец, чем-нибудь полезным. Это явно не твое...', (select id from Book where Title = 'title_1'));
 insert into Comment(Comment_Text, Book_Id) values ('Што это? 0_о', (select id from Book where Title = 'title_0'));
 insert into Comment(Comment_Text, Book_Id) values ('Конгениально!', (select id from Book where Title = 'title_0'));
-insert into Comment(Comment_Text, Book_Id) values ('Автор ничтожен', (select id from Book where Title = 'title_1'));

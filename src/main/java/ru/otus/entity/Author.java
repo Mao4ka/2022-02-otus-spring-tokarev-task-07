@@ -1,6 +1,7 @@
 package ru.otus.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,8 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Author")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author {
@@ -26,5 +26,9 @@ public class Author {
 
     @Column(name = "Author_name")
     private String authorName;
+
+    public Author(String authorName) {
+        this.authorName = authorName;
+    }
 
 }

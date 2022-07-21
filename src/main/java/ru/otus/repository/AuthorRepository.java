@@ -1,19 +1,26 @@
 package ru.otus.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.entity.Author;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface AuthorRepository {
+public interface AuthorRepository extends JpaRepository<Author, Long> {
 
-    Author save(Author author);
+    @Override
+    List<Author> findAll(); // есть по-умолчанию но можно переопределить
 
-    Optional<Author> findById(long id);
-    List<Author> findAll();
-    List<Author> findByName(String name);
+    List<Author> findByAuthorName(String name);
 
-    void updateNameById(long id, String name);
-    void deleteById(long id);
+    List<Author> findByAuthorNameLike(String name);
+
+    @Modifying
+    @Transactional
+    @Query("update Author a set a.authorName = :name where a.id = :id")
+    void updateNameById(@Param("id") long id, @Param("name") String name);
 
 }
